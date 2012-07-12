@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sofia Demos</string>
+    <string-array name="repeat_modes">
+        <item >NONE</item>
+        <item >REPEAT</item>
+        <item >OSCILLATE</item>
+    </string-array>
+    <string name="google_maps_api_key">03ttug2GJIzfWaRn5wygeUe_K1h4NU0_Y7hFsXw</string>
+</resources>
