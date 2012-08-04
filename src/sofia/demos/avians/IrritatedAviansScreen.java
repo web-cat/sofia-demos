@@ -1,12 +1,10 @@
 package sofia.demos.avians;
 
-import static sofia.graphics.Anchor.TOP;
-
 import java.util.Random;
-
 import sofia.app.ShapeScreen;
 import sofia.demos.R;
-import sofia.graphics.BitmapShape;
+import static sofia.graphics.Anchor.TOP;
+import sofia.graphics.ImageShape;
 import sofia.graphics.Color;
 import sofia.graphics.RectangleShape;
 import android.graphics.PointF;
@@ -18,8 +16,8 @@ import android.graphics.RectF;
  * game.
  *
  * @author  Tony Allevato
- * @author  Last changed by $Author$
- * @version $Revision$, $Date$
+ * @author  Last changed by $Author: edwards $
+ * @version $Date: 2012/08/04 16:34 $
  */
 public class IrritatedAviansScreen extends ShapeScreen
 {
@@ -33,13 +31,13 @@ public class IrritatedAviansScreen extends ShapeScreen
 	// ----------------------------------------------------------
 	public void initialize()
 	{
-		BitmapShape background = new BitmapShape(R.drawable.meadow,
+		ImageShape background = new ImageShape(R.drawable.meadow,
 				new RectF(0, 0, getWidth(), getHeight()));
 		background.setZIndex(-200);
 		add(background);
 
 		PointF birdStart = new PointF(100, getHeight() - 100);
-		
+
 		RectangleShape pole = new RectangleShape(
 				TOP.anchoredAt(birdStart).sized(20, 100));
 		pole.setColor(Color.white);
@@ -51,7 +49,7 @@ public class IrritatedAviansScreen extends ShapeScreen
 
 		placePigs();
 	}
-	
+
 
 	// ----------------------------------------------------------
 	private void placePigs()
@@ -66,6 +64,6 @@ public class IrritatedAviansScreen extends ShapeScreen
 
 			Pig pig = new Pig(x, y);
 			add(pig);
-		}		
+		}
 	}
 }

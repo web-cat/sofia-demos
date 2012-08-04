@@ -2,7 +2,7 @@ package sofia.demos.avians;
 
 import static sofia.graphics.Anchor.CENTER;
 import sofia.demos.R;
-import sofia.graphics.BitmapShape;
+import sofia.graphics.ImageShape;
 import sofia.graphics.Color;
 import sofia.graphics.Geometry;
 import sofia.graphics.OvalShape;
@@ -18,10 +18,10 @@ import android.view.MotionEvent;
  * Represents a bird in the Irritated Avians game.
  *
  * @author  Tony Allevato
- * @author  Last changed by $Author$
- * @version $Revision$, $Date$
+ * @author  Last changed by $Author: edwards $
+ * @version $Date: 2012/08/04 16:34 $
  */
-public class Bird extends BitmapShape
+public class Bird extends ImageShape
 {
 	//~ Instance/static variables .............................................
 
@@ -36,11 +36,11 @@ public class Bird extends BitmapShape
 	public Bird(PointF start)
 	{
 		super(R.drawable.bird, CENTER.anchoredAt(start).sized(40, 26));
-		
+
 		startingPosition = start;
 	}
-	
-	
+
+
 	//~ Methods ...............................................................
 
 	// ----------------------------------------------------------
@@ -49,8 +49,8 @@ public class Bird extends BitmapShape
 		stopAnimation();
 		setPosition(CENTER.anchoredAt(startingPosition));
 	}
-	
-	
+
+
 	// ----------------------------------------------------------
 	public void onCollisionWith(ViewEdges edges)
 	{
@@ -75,7 +75,7 @@ public class Bird extends BitmapShape
 				startingPosition.x, startingPosition.y, e.getX(), e.getY());
 		float angle = Geometry.angleBetween(
 				startingPosition.x, startingPosition.y, e.getX(), e.getY());
-		
+
 		distance = Math.min(distance, 30.0f);
 
 		PointF newPosition = Geometry.polarShift(
@@ -92,9 +92,9 @@ public class Bird extends BitmapShape
 		float dy = e.getY() - startingPosition.y;
 
 		fling(-dx, -dy);
-	}	
+	}
 
-	
+
 	// ----------------------------------------------------------
 	public void fling(float vx, float vy)
 	{

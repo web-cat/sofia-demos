@@ -1,18 +1,18 @@
 package sofia.demos.avians;
 
-import static sofia.graphics.Anchor.CENTER;
 import sofia.demos.R;
-import sofia.graphics.BitmapShape;
+import static sofia.graphics.Anchor.CENTER;
+import sofia.graphics.ImageShape;
 
 //-------------------------------------------------------------------------
 /**
  * Represents a pig in the Irritated Avians game.
  *
  * @author  Tony Allevato
- * @author  Last changed by $Author$
- * @version $Revision$, $Date$
+ * @author  Last changed by $Author: edwards $
+ * @version $Date: 2012/08/04 16:34 $
  */
-public class Pig extends BitmapShape
+public class Pig extends ImageShape
 {
 	//~ Constructors ..........................................................
 
@@ -21,7 +21,7 @@ public class Pig extends BitmapShape
 	{
 		super(R.drawable.pig, CENTER.anchoredAt(x, y).sized(40, 31));
 	}
-	
+
 
 	//~ Methods ...............................................................
 
