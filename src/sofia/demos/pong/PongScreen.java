@@ -14,7 +14,8 @@ import sofia.graphics.ViewEdges;
  * and collision detection.
  *
  * @author  Tony Allevato
- * @version 2012.01.27
+ * @author  Last changed by $Author: edwards $
+ * @version $Date: 2012/08/04 16:40 $
  */
 public class PongScreen extends ShapeScreen
 {
@@ -83,7 +84,7 @@ public class PongScreen extends ShapeScreen
             float x = e.getX(i);
             float y = e.getY(i);
 
-            if (x < leftPaddle.getX2() + 20)
+            if (x < leftPaddle.getBounds().right + 20)
             {
                 leftPaddle.movePaddleTo(y);
             }
@@ -108,7 +109,7 @@ public class PongScreen extends ShapeScreen
             float x = e.getX(i);
             float y = e.getY(i);
 
-            if (x < leftPaddle.getX2() + 20)
+            if (x < leftPaddle.getBounds().right + 20)
             {
                 leftPaddle.movePaddleTo(y);
             }
