@@ -3,16 +3,17 @@ package sofia.demos.breakout;
 import static sofia.graphics.Anchor.*;
 import sofia.graphics.Color;
 import sofia.graphics.ViewEdges;
-import java.util.Random;
 import sofia.graphics.Timings;
 import sofia.graphics.OvalShape;
+import sofia.util.Random;
 
 //-------------------------------------------------------------------------
 /**
  * A paddle in the Breakout game.
  *
  * @author  Tony Allevato
- * @version 2012.02.03
+ * @author  Last changed by $Author: edwards $
+ * @version $Date: 2012/08/06 11:12 $
  */
 public class Ball extends OvalShape
 {
@@ -51,7 +52,7 @@ public class Ball extends OvalShape
         // TODO How can we improve this?
         setBounds(BOTTOM.anchoredAt(TOP.of(paddle)).sized(20, 20));
 
-        Random random = new Random();
+        Random random = Random.generator();
 
         xVel = (float) (random.nextDouble() * 10);
         if (random.nextBoolean())

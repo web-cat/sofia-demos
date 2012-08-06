@@ -1,12 +1,12 @@
 package sofia.demos.avians;
 
-import java.util.Random;
 import sofia.app.ShapeScreen;
 import sofia.demos.R;
 import static sofia.graphics.Anchor.TOP;
 import sofia.graphics.ImageShape;
 import sofia.graphics.Color;
 import sofia.graphics.RectangleShape;
+import sofia.util.Random;
 import android.graphics.PointF;
 import android.graphics.RectF;
 
@@ -17,7 +17,7 @@ import android.graphics.RectF;
  *
  * @author  Tony Allevato
  * @author  Last changed by $Author: edwards $
- * @version $Date: 2012/08/04 16:34 $
+ * @version $Date: 2012/08/06 11:12 $
  */
 public class IrritatedAviansScreen extends ShapeScreen
 {
@@ -54,7 +54,7 @@ public class IrritatedAviansScreen extends ShapeScreen
 	// ----------------------------------------------------------
 	private void placePigs()
 	{
-		Random random = new Random();
+		Random random = Random.generator();
 
 		for (int i = 0; i < 4; i++)
 		{

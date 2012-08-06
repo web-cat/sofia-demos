@@ -1,18 +1,18 @@
 package sofia.demos.pong;
 
-import android.graphics.RectF;
-import java.util.Random;
 import static sofia.graphics.Anchor.*;
 import sofia.graphics.OvalShape;
 import sofia.graphics.Timings;
 import sofia.graphics.ViewEdges;
+import sofia.util.Random;
 
 // -------------------------------------------------------------------------
 /**
  * The ball in the Pong game.
  *
  * @author  Tony Allevato
- * @version 2012.01.27
+ * @author  Last changed by $Author: edwards $
+ * @version $Date: 2012/08/06 11:12 $
  */
 public class Ball extends OvalShape
 {
@@ -48,7 +48,7 @@ public class Ball extends OvalShape
                 0.08f * getParentView().getWidth(),
                 0.08f * getParentView().getWidth()));
 
-        Random random = new Random();
+        Random random = Random.generator();
 
         xVel = 6.0f + (float)(random.nextDouble() * 12);
         if (random.nextBoolean())
