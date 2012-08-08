@@ -1,7 +1,7 @@
 package sofia.demos;
 
 import sofia.maps.ProvidesMarkerGeoPoint;
-import sofia.maps.ProvidesMarkerSnippet;
+import sofia.maps.ProvidesMarkerContent;
 import sofia.maps.ProvidesMarkerTitle;
 
 import com.google.android.maps.GeoPoint;
@@ -41,7 +41,7 @@ public class MapItem
 
 
 	// ----------------------------------------------------------
-	@ProvidesMarkerSnippet
+	@ProvidesMarkerContent
 	public String getSnippet()
 	{
 		return snippet;
