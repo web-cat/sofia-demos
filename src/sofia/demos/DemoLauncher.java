@@ -52,8 +52,9 @@ public class DemoLauncher extends Screen
     // ----------------------------------------------------------
     public void gesturesClicked()
     {
-    	MediaChooser chooser = new MediaChooser();
-    	chooser.start(this);
+    	//MediaChooser chooser = new MediaChooser();
+    	//chooser.start(this);
+		presentScreen(GestureDemo.class, (Object) null);
     }
 
     
@@ -143,5 +144,12 @@ public class DemoLauncher extends Screen
     // ----------------------------------------------------------
     public void inspectorClicked(View view)
     {
+    }
+    
+    
+    // ----------------------------------------------------------
+    public void joystickDemoClicked(View view)
+    {
+    	presentScreen(JoystickDemo.class);
     }
 }

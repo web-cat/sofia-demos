@@ -151,6 +151,13 @@
                 android:layout_weight="1"
 		        android:text="Inspector" />
 
+		    <Button
+		        android:id="@+id/joystickDemo"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:text="On-Screen Joystick" />
+
 		    </TableRow>
         
         </TableLayout>
