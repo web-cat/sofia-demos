@@ -7,9 +7,9 @@ import sofia.graphics.Color;
 import sofia.graphics.Geometry;
 import sofia.graphics.OvalShape;
 import sofia.graphics.Shape;
-import sofia.graphics.ShapeAnimationAdapter;
 import sofia.graphics.Timings;
 import sofia.graphics.ViewEdges;
+import sofia.graphics.animation.ShapeAnimator;
 import android.graphics.PointF;
 import android.view.MotionEvent;
 
@@ -102,28 +102,20 @@ public class Bird extends ImageShape
 			.timing(Timings.linear())
 			.repeat()
 			.moveBy(vx / 2, vy / 2, 0, GRAVITY)
-			.listener(new FlightTrailListener())
 			.play();
 	}
 
 
-	//~ Inner classes .........................................................
-
 	// ----------------------------------------------------------
-	private class FlightTrailListener extends ShapeAnimationAdapter
+	public void onAnimationRepeat(ShapeAnimator animator)
 	{
-		// ----------------------------------------------------------
-		@Override
-		public void onAnimationRepeat(Shape shape, boolean backward)
-		{
-			OvalShape dot = new OvalShape(CENTER.of(Bird.this).sized(5, 5));
-			dot.setFillColor(Color.white);
-			dot.setColor(Color.rgb(232, 232, 232));
-			dot.setFilled(true);
-			dot.setZIndex(-100);
-			addOther(dot);
+		OvalShape dot = new OvalShape(CENTER.of(Bird.this).sized(5, 5));
+		dot.setFillColor(Color.white);
+		dot.setColor(Color.rgb(232, 232, 232));
+		dot.setFilled(true);
+		dot.setZIndex(-100);
+		addOther(dot);
 
-			dot.animate(500).delay(1000).alpha(0).removeWhenComplete().play();
-		}
+		dot.animate(500).delay(1000).alpha(0).removeWhenComplete().play();
 	}
 }

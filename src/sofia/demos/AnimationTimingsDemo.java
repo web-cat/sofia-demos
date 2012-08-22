@@ -9,6 +9,7 @@ import android.view.animation.Interpolator;
 import android.view.View;
 import sofia.app.Screen;
 import sofia.graphics.*;
+import sofia.graphics.animation.ShapeAnimator;
 import static sofia.graphics.Anchor.*;
 import static sofia.graphics.Timings.*;
 
@@ -146,7 +147,6 @@ public class AnimationTimingsDemo extends Screen
         rectangle.animate(2000)
             .delay(delayAnimation.isChecked() ? 2000 : 0)
             .timing(timing)
-            .listener(new DemoListener())
             .bounds(endingBounds)
             .color(Color.red)
             .repeatMode(RepeatMode.valueOf(
@@ -156,39 +156,37 @@ public class AnimationTimingsDemo extends Screen
 
 
     // ----------------------------------------------------------
-    public class DemoListener implements ShapeAnimationListener
+    public void onAnimationStart(ShapeAnimator animator)
     {
-        // ----------------------------------------------------------
-        public void onAnimationStart(Shape shape)
+        repeatCount = 0;
+        statusLabel.setText("Started");
+    }
+
+
+    // ----------------------------------------------------------
+    public void onAnimationRepeat(ShapeAnimator animator)
+    {
+    	boolean backward = animator.isBackward();
+
+        String text = "";
+        if (backward)
         {
-            repeatCount = 0;
-            statusLabel.setText("Started");
+            text = "Backward";
+        }
+        else
+        {
+            repeatCount++;
+            text = "Forward";
         }
 
-
-        // ----------------------------------------------------------
-        public void onAnimationRepeat(Shape shape, boolean backward)
-        {
-            String text = "";
-            if (backward)
-            {
-                text = "Backward";
-            }
-            else
-            {
-                repeatCount++;
-                text = "Forward";
-            }
-
-            text += " (repeated " + repeatCount + " times)";
-            statusLabel.setText(text);
-        }
+        text += " (repeated " + repeatCount + " times)";
+        statusLabel.setText(text);
+    }
 
 
-        // ----------------------------------------------------------
-        public void onAnimationEnd(Shape shape)
-        {
-            statusLabel.setText("Ended");
-        }
+    // ----------------------------------------------------------
+    public void onAnimationDone(ShapeAnimator animator)
+    {
+        statusLabel.setText("Ended");
     }
 }
