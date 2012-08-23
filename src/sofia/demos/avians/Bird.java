@@ -9,7 +9,6 @@ import sofia.graphics.OvalShape;
 import sofia.graphics.Shape;
 import sofia.graphics.Timings;
 import sofia.graphics.ViewEdges;
-import sofia.graphics.animation.ShapeAnimator;
 import android.graphics.PointF;
 import android.view.MotionEvent;
 
@@ -107,7 +106,7 @@ public class Bird extends ImageShape
 
 
 	// ----------------------------------------------------------
-	public void onAnimationRepeat(ShapeAnimator animator)
+	public void onAnimationRepeat(Animator<?> animator)
 	{
 		OvalShape dot = new OvalShape(CENTER.of(Bird.this).sized(5, 5));
 		dot.setFillColor(Color.white);

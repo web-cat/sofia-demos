@@ -1,17 +1,31 @@
 package sofia.demos;
 
-import android.widget.TextView;
-import sofia.graphics.Shape;
-import android.widget.Spinner;
-import android.widget.CheckBox;
-import android.graphics.RectF;
-import android.view.animation.Interpolator;
-import android.view.View;
+import static sofia.graphics.Anchor.TOP_LEFT;
+import static sofia.graphics.Anchor.TOP_RIGHT;
+import static sofia.graphics.Timings.backIn;
+import static sofia.graphics.Timings.backInOut;
+import static sofia.graphics.Timings.backOut;
+import static sofia.graphics.Timings.bounce;
+import static sofia.graphics.Timings.cycle;
+import static sofia.graphics.Timings.easeIn;
+import static sofia.graphics.Timings.easeInOut;
+import static sofia.graphics.Timings.easeOut;
+import static sofia.graphics.Timings.elasticIn;
+import static sofia.graphics.Timings.elasticInOut;
+import static sofia.graphics.Timings.elasticOut;
+import static sofia.graphics.Timings.linear;
 import sofia.app.Screen;
-import sofia.graphics.*;
-import sofia.graphics.animation.ShapeAnimator;
-import static sofia.graphics.Anchor.*;
-import static sofia.graphics.Timings.*;
+import sofia.graphics.Color;
+import sofia.graphics.RectangleShape;
+import sofia.graphics.RepeatMode;
+import sofia.graphics.Shape;
+import sofia.graphics.ShapeView;
+import android.graphics.RectF;
+import android.view.View;
+import android.view.animation.Interpolator;
+import android.widget.CheckBox;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 public class AnimationTimingsDemo extends Screen
 {
@@ -156,7 +170,7 @@ public class AnimationTimingsDemo extends Screen
 
 
     // ----------------------------------------------------------
-    public void onAnimationStart(ShapeAnimator animator)
+    public void onAnimationStart(Shape.Animator<?> animator)
     {
         repeatCount = 0;
         statusLabel.setText("Started");
@@ -164,7 +178,7 @@ public class AnimationTimingsDemo extends Screen
 
 
     // ----------------------------------------------------------
-    public void onAnimationRepeat(ShapeAnimator animator)
+    public void onAnimationRepeat(Shape.Animator<?> animator)
     {
     	boolean backward = animator.isBackward();
 
@@ -185,7 +199,7 @@ public class AnimationTimingsDemo extends Screen
 
 
     // ----------------------------------------------------------
-    public void onAnimationDone(ShapeAnimator animator)
+    public void onAnimationDone(Shape.Animator<?> animator)
     {
         statusLabel.setText("Ended");
     }
