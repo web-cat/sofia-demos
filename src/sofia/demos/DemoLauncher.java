@@ -1,63 +1,74 @@
 package sofia.demos;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import sofia.app.ListScreen;
 import sofia.app.OptionsMenu;
-import sofia.app.Persistent;
-import sofia.app.Screen;
-import sofia.app.ScreenLayout;
 import sofia.content.MediaChooser;
 import sofia.content.PhotoCamera;
-import sofia.data.InspectorScreen;
 import sofia.demos.avians.IrritatedAviansScreen;
 import sofia.demos.breakout.BreakoutScreen;
 import sofia.demos.pong.PongScreen;
-import sofia.graphics.Color;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
-import com.google.android.maps.GeoPoint;
+import android.app.Activity;
 
 // -------------------------------------------------------------------------
 /**
- * Write a one-sentence summary of your class here.
- * Follow it with additional details about its purpose, what abstraction
- * it represents, and how to use it.
+ * A launcher for the other demos in the project. The demos are presented in a
+ * full screen list view.
  *
  * @author  Tony Allevato
  * @version 2011.12.04
  */
-@ScreenLayout("launcher")
 @OptionsMenu("launcher")
-public class DemoLauncher extends Screen
+public class DemoLauncher extends ListScreen<DemoClass>
 {
-	private Button helloWorld;
+	//~ Fields ................................................................
+
+	private static final List<DemoClass> demoList;
+	static 
+	{
+		demoList = new ArrayList<DemoClass>();
+		demoList.add(new DemoClass(HelloWorldDemo.class));
+		demoList.add(new DemoClass(ShapeLayoutDemo.class));
+		demoList.add(new DemoClass(MultiTouchDotsDemo.class));
+		demoList.add(new DemoClass(GestureDemo.class));
+		demoList.add(new DemoClass(ConnectFour.class));
+		demoList.add(new DemoClass(AnimationTimingsDemo.class));
+		demoList.add(new DemoClass(MarkerDemo.class));
+		demoList.add(new DemoClass(BackAndForthScreenOne.class));
+		demoList.add(new DemoClass(PongScreen.class));
+		demoList.add(new DemoClass(BreakoutScreen.class));
+		demoList.add(new DemoClass(IrritatedAviansScreen.class));
+		demoList.add(new DemoClass(CompositeShapeDemo.class));
+		demoList.add(new DemoClass(JoystickDemo.class));
+		demoList.add(new DemoClass(ListDemo.class));
+	}
 
 
-    // ----------------------------------------------------------
-    public void helloWorldClicked()
-    {
-        presentScreen(HelloWorldDemo.class);
-    }
+	//~ Methods ...............................................................
+
+	// ----------------------------------------------------------
+	public void initialize()
+	{
+		addAll(demoList);
+	}
 
 
-    // ----------------------------------------------------------
-    public void dotsClicked()
-    {
-        presentScreen(MultiTouchDotsDemo.class);
-    }
+	// ----------------------------------------------------------
+	public void listViewItemClicked(DemoClass demoToLaunch)
+	{
+		if (demoToLaunch.getType().equals(GestureDemo.class))
+		{
+			presentScreen(GestureDemo.class, (Object) null);			
+		}
+		else
+		{
+			presentScreen(demoToLaunch.getType());
+		}
+	}
 
 
-    // ----------------------------------------------------------
-    public void gesturesClicked()
-    {
-    	//MediaChooser chooser = new MediaChooser();
-    	//chooser.start(this);
-		presentScreen(GestureDemo.class, (Object) null);
-    }
-
-    
     // ----------------------------------------------------------
     public void mediaWasChosen(MediaChooser chooser)
     {
@@ -76,87 +87,42 @@ public class DemoLauncher extends Screen
     		presentScreen(GestureDemo.class, chooser.getBitmap());
     	}
     }
+}
 
 
-    // ----------------------------------------------------------
-    public void animationTimingsClicked(View view)
-    {
-        presentScreen(AnimationTimingsDemo.class);
-    }
+//-------------------------------------------------------------------------
+/**
+ * Wraps an activity class with a nice toString method so that it can be
+ * displayed in the list view.
+ */
+class DemoClass
+{
+	//~ Fields ................................................................
+
+	private Class<? extends Activity> type;
+
+	
+	//~ Constructors ..........................................................
+	
+	// ----------------------------------------------------------
+	public DemoClass(Class<? extends Activity> type)
+	{
+		this.type = type;
+	}
 
 
-    // ----------------------------------------------------------
-    public void shapeLayoutClicked(View view)
-    {
-        presentScreen(ShapeLayoutDemo.class);
-    }
+	//~ Methods ...............................................................
+
+	// ----------------------------------------------------------
+	public Class<? extends Activity> getType()
+	{
+		return type;
+	}
 
 
-    // ----------------------------------------------------------
-    public void connectFourClicked(View view)
-    {
-        presentScreen(ConnectFour.class);
-    }
-
-
-    // ----------------------------------------------------------
-    public void listDemoClicked()
-    {
-    	presentScreen(ListDemo.class);
-    }
-
-
-    // ----------------------------------------------------------
-    public void mapClicked(View view)
-    {
-        presentScreen(MarkerDemo.class);
-    }
-
-
-    // ----------------------------------------------------------
-    public void backAndForthClicked(View view)
-    {
-        presentScreen(BackAndForthScreenOne.class);
-    }
-
-
-    // ----------------------------------------------------------
-    public void compositeShapesClicked(View view)
-    {
-        presentScreen(CompositeShapeDemo.class);
-    }
-
-
-    // ----------------------------------------------------------
-    public void pongClicked(View view)
-    {
-        presentScreen(PongScreen.class);
-    }
-
-
-    // ----------------------------------------------------------
-    public void breakoutClicked(View view)
-    {
-        presentScreen(BreakoutScreen.class);
-    }
-
-
-    // ----------------------------------------------------------
-    public void irritatedAviansClicked(View view)
-    {
-        presentScreen(IrritatedAviansScreen.class);
-    }
-
-
-    // ----------------------------------------------------------
-    public void inspectorClicked(View view)
-    {
-    }
-    
-    
-    // ----------------------------------------------------------
-    public void joystickDemoClicked(View view)
-    {
-    	presentScreen(JoystickDemo.class);
-    }
+	// ----------------------------------------------------------
+	public String toString()
+	{
+		return type.getSimpleName();
+	}
 }
