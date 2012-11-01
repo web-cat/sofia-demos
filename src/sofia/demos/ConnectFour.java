@@ -16,7 +16,7 @@ import android.widget.*;
  * @author  Tony Allevato
  * @version 2011.12.13
  */
-public class ConnectFour extends Screen
+public class ConnectFour extends ShapeScreen
 {
     //~ Instance/static variables .............................................
 
@@ -36,7 +36,6 @@ public class ConnectFour extends Screen
     private static final Color PLAYER1_COLOR = Color.red;
     private static final Color PLAYER2_COLOR = Color.blue;
 
-    private ShapeView shapeView;
     private TextView statusLabel;
 
     private RectangleShape[] columns;
@@ -52,8 +51,6 @@ public class ConnectFour extends Screen
     // ----------------------------------------------------------
     public void initialize()
     {
-        setContentView(R.layout.connect_four);
-
         board = new Cell[ROWS][COLS];
     }
 
@@ -62,7 +59,7 @@ public class ConnectFour extends Screen
     @Override
     protected void afterInitialize()
     {
-        cellSize = shapeView.getWidth() / COLS;
+        cellSize = getWidth() / COLS;
 
         columns = new RectangleShape[COLS];
 
@@ -75,7 +72,7 @@ public class ConnectFour extends Screen
                 cellSize * ROWS);
             columns[c] = new RectangleShape(bounds);
             columns[c].setColor(Color.gray);
-            shapeView.add(columns[c]);
+            add(columns[c]);
 
             for (int r = 0; r < ROWS; r++)
             {
@@ -144,7 +141,7 @@ public class ConnectFour extends Screen
             player2Turn = true;
         }
 
-        shapeView.add(piece);
+        add(piece);
 
         PointF position = new PointF(col * cellSize + PADDING,
             freeSlot * cellSize + PADDING);
