@@ -38,6 +38,7 @@
         <activity android:name=".BackAndForthScreenTwo"/>
         <activity android:name=".CompositeShapeDemo"/>
         <activity android:name=".JoystickDemo"/>
+        <activity android:name="sofia.demos.ListDemo"/>
         <activity android:name="sofia.demos.pong.PongScreen"/>
         <activity android:name="sofia.demos.breakout.BreakoutScreen"/>
         <activity android:name="sofia.demos.avians.IrritatedAviansScreen"/>

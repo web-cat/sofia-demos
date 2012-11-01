@@ -28,8 +28,8 @@ import com.google.android.maps.GeoPoint;
  * @author  Tony Allevato
  * @version 2011.12.04
  */
-@ScreenLayout(R.layout.launcher)
-@OptionsMenu(R.menu.launcher)
+@ScreenLayout("launcher")
+@OptionsMenu("launcher")
 public class DemoLauncher extends Screen
 {
 	private Button helloWorld;
@@ -96,6 +96,13 @@ public class DemoLauncher extends Screen
     public void connectFourClicked(View view)
     {
         presentScreen(ConnectFour.class);
+    }
+
+
+    // ----------------------------------------------------------
+    public void listDemoClicked()
+    {
+    	presentScreen(ListDemo.class);
     }
 
 
