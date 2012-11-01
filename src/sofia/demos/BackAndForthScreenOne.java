@@ -1,9 +1,10 @@
 package sofia.demos;
 
+import sofia.app.Screen;
+import sofia.app.ScreenLayout;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.SeekBar;
-import sofia.app.Screen;
 
 // -------------------------------------------------------------------------
 /**
@@ -14,6 +15,7 @@ import sofia.app.Screen;
  *  @author  Tony Allevato
  *  @version 2011.12.17
  */
+@ScreenLayout("back_and_forth_1")
 public class BackAndForthScreenOne extends Screen
 {
     private SeekBar seekBar;
@@ -21,19 +23,16 @@ public class BackAndForthScreenOne extends Screen
 
 
     // ----------------------------------------------------------
-    public void initialize()
-    {
-        setContentView(R.layout.back_and_forth_1);
-    }
-
-
-    // ----------------------------------------------------------
     public void openScreenTwo(View view)
     {
-        /*String result = presentScreen(
-            BackAndForthScreenTwo.class, String.class,
-            seekBar.getProgress(), textField.getText().toString());
-
-        showConfirmationDialog("Result", "You entered " + result);*/
+    	presentScreen(BackAndForthScreenTwo.class,
+    			seekBar.getProgress(), textField.getText().toString());
+    }
+    
+    
+    // ----------------------------------------------------------
+    public void backAndForthScreenTwoFinished(String result)
+    {
+    	showConfirmationDialog("Result", "You entered " + result);
     }
 }

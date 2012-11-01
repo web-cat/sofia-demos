@@ -4,7 +4,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import sofia.app.Screen;
+import sofia.app.ScreenLayout;
 
+@ScreenLayout("back_and_forth_2")
 public class BackAndForthScreenTwo extends Screen
 {
     private TextView textView;
@@ -14,8 +16,6 @@ public class BackAndForthScreenTwo extends Screen
     // ----------------------------------------------------------
     public void initialize(int value, String text)
     {
-        setContentView(R.layout.back_and_forth_2);
-
         textView.setText("You slid to "
             + value + " on the seek bar and typed "
             + text + " in the text field.");

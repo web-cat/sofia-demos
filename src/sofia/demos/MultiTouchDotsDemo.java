@@ -7,6 +7,7 @@ import java.util.HashMap;
 import sofia.app.ShapeScreen;
 import sofia.graphics.Color;
 import sofia.graphics.OvalShape;
+import sofia.graphics.RectangleShape;
 import sofia.graphics.Shape;
 import android.view.MotionEvent;
 
@@ -47,10 +48,10 @@ public class MultiTouchDotsDemo extends ShapeScreen
         float y = e.getY(index);
         Color color = DOT_COLORS[finger % DOT_COLORS.length];
 
-        OvalShape dot = new OvalShape(CENTER.anchoredAt(x, y).sized(80, 80));
+        RectangleShape dot = new RectangleShape(CENTER.anchoredAt(x, y).sized(80, 80));
         add(dot);
         dot.setColor(color);
-        dot.setFilled(true);
+        //dot.setFilled(true);
 
         fingerDots.put(finger, dot);
     }

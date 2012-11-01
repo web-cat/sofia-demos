@@ -1,11 +1,11 @@
 package sofia.demos;
 
-import static sofia.graphics.Anchor.BOTTOM_LEFT;
-import static sofia.graphics.Anchor.CENTER;
+import static sofia.graphics.Anchor.*;
 import sofia.app.ShapeScreen;
 import sofia.graphics.DirectionalPad;
 import sofia.graphics.RectangleShape;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 
 //-------------------------------------------------------------------------
 /**
@@ -33,11 +33,18 @@ public class JoystickDemo extends ShapeScreen
 		player = new RectangleShape(
 				CENTER.anchoredAt(CENTER.ofView()).sized(50, 50));
 		add(player);
-		
+
+		float width = getWidth() / 4;
+
 		DirectionalPad dpad = new DirectionalPad(
 				BOTTOM_LEFT.anchoredAt(
-						BOTTOM_LEFT.ofView().shiftBy(10, -10)).sized(200, 200));
+						BOTTOM_LEFT.ofView().shiftBy(10, -10)).sized(width, width));
 		add(dpad);
+
+		/*Thumbstick stick = new Thumbstick(
+				BOTTOM_RIGHT.anchoredAt(
+						BOTTOM_RIGHT.ofView().shiftBy(-10, -10)).sized(width, width));
+		add(stick);*/
 	}
 	
 	
@@ -70,4 +77,21 @@ public class JoystickDemo extends ShapeScreen
 			break;
 		}
 	}
+	
+	
+	// ----------------------------------------------------------
+	/**
+	 * Handles the trackball events from the thumbstick.
+	 * 
+	 * @param e a {@code MotionEvent} describing the motion
+	 */
+	/*public boolean onTrackballEvent(MotionEvent e)
+	{
+		float x = e.getX();
+		float y = e.getY();
+
+		player.move(x * 10, y * 10);
+
+		return true;
+	}*/
 }

@@ -47,8 +47,8 @@ public class PongScreen extends ShapeScreen
         rightScoreLabel = new TextShape("0",
             TOP.anchoredAt(TOP.ofView().shiftBy(40, 2)));
 
-        leftScoreLabel.setTypeface("*-bold-14");
-        rightScoreLabel.setTypeface("*-bold-14");
+        leftScoreLabel.setTypefaceAndSize("*-bold-14");
+        rightScoreLabel.setTypefaceAndSize("*-bold-14");
 
         leftPaddle = new Paddle(new RectF(20, 20, 40, 120));
         leftPaddle.setFilled(true);

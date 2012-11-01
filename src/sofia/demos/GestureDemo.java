@@ -11,30 +11,26 @@ import static sofia.graphics.Anchor.*;
 public class GestureDemo extends ShapeScreen
 {
     private TextShape text;
-    private ImageShape image;
+    private SVGShape bitmap;
 
     private boolean didRotate;
 
 
     // ----------------------------------------------------------
-    public void initialize(Bitmap bitmap)
+    public void initialize()
     {
         text = new TextShape("", TOP_LEFT.ofView());
         text.setTypeSize(16);
         add(text);
 
-        if (bitmap == null)
+        for (int x = 0; x < 10; x++)
         {
-            image = new ImageShape(R.drawable.kitten,
-                CENTER.anchoredAt(CENTER.ofView()).sized(320, 320));
-        }
-        else
-        {
-            image = new ImageShape(bitmap,
-                CENTER.anchoredAt(CENTER.ofView()).sized(320, 320));
-        }
+            bitmap = new SVGShape(R.raw.pig2,
+                    TOP_LEFT.anchoredAt(x * 20, 10).sized(20, 20));
 
-        add(image);
+            add(bitmap);
+            bitmap.animate(1000).rotation(360).repeat().play();
+        }
 
         enableScaleGestures();
         enableRotateGestures();
@@ -44,10 +40,10 @@ public class GestureDemo extends ShapeScreen
     // ----------------------------------------------------------
     public boolean onRotate(RotateGestureDetector gesture)
     {
-        float oldRot = image.getRotation();
+        float oldRot = bitmap.getRotation();
         float rot = gesture.getRotation();
 
-        image.setRotation(oldRot + rot);
+        bitmap.setRotation(oldRot + rot);
 
         didRotate = true;
 
@@ -58,11 +54,11 @@ public class GestureDemo extends ShapeScreen
     // ----------------------------------------------------------
     public boolean onScale(ScaleGestureDetector gesture)
     {
-        float width = image.getWidth();
-        float height = image.getHeight();
+        float width = bitmap.getWidth();
+        float height = bitmap.getHeight();
         float scale = gesture.getScaleFactor();
 
-        image.setBounds(CENTER.anchoredAt(CENTER.ofView()).sized(
+        bitmap.setBounds(CENTER.anchoredAt(CENTER.ofView()).sized(
             width * scale, height * scale));
 
         return true;
@@ -96,7 +92,7 @@ public class GestureDemo extends ShapeScreen
     {
         if (!didRotate)
         {
-            boolean inside = image.contains(e.getX(), e.getY());
+            boolean inside = bitmap.contains(e.getX(), e.getY());
 
             text.setText(inside ? "Inside" : "Outside");
         }
