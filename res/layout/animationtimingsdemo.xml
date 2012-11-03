@@ -42,7 +42,7 @@
             android:entries="@array/repeat_modes" />
 
     </LinearLayout>
-    
+
     <TableLayout
         android:id="@+id/tableLayout1"
         android:layout_width="match_parent"
@@ -55,27 +55,24 @@
             android:layout_height="wrap_content" >
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/easeIn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="easeInClicked"
                 android:text="easeIn" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/easeOut"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="easeOutClicked"
                 android:text="easeOut" />
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/easeInOut"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="easeInOutClicked"
                 android:text="easeInOut" />
 
         </TableRow>
@@ -86,27 +83,24 @@
             android:layout_height="wrap_content" >
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/backIn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="backInClicked"
                 android:text="backIn" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/backOut"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="backOutClicked"
                 android:text="backOut" />
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/backInOut"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="backInOutClicked"
                 android:text="backInOut" />
         </TableRow>
 
@@ -116,25 +110,25 @@
             android:layout_height="wrap_content" >
 
             <Button
-                android:id="@+id/button11"
+                android:id="@+id/elasticInOut"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="elasticInOut" android:onClick="elasticInOutClicked"/>
+                android:text="elasticInOut"/>
 
             <Button
-                android:id="@+id/button12"
+                android:id="@+id/elasticIn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="elasticIn" android:onClick="elasticInClicked"/>
+                android:text="elasticIn"/>
 
             <Button
-                android:id="@+id/button13"
+                android:id="@+id/elasticOut"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="elasticOut" android:onClick="elasticOutClicked"/>
+                android:text="elasticOut"/>
         </TableRow>
 
         <TableRow
@@ -143,27 +137,24 @@
             android:layout_height="wrap_content" >
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/linear"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="linearClicked"
                 android:text="linear" />
 
             <Button
-                android:id="@+id/button8"
+                android:id="@+id/bounce"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="bounceClicked"
                 android:text="bounce" />
 
             <Button
-                android:id="@+id/button9"
+                android:id="@+id/cycle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="cycleClicked"
                 android:text="cycle (4)" />
         </TableRow>
 
@@ -173,11 +164,10 @@
             android:layout_height="wrap_content" >
 
             <Button
-                android:id="@+id/button10"
+                android:id="@+id/stopAnimation"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="stopAnimationClicked"
                 android:text="Stop Animation" />
         </TableRow>
 

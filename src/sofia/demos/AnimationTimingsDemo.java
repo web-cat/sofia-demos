@@ -1,30 +1,18 @@
 package sofia.demos;
 
-import static sofia.graphics.Anchor.TOP_LEFT;
-import static sofia.graphics.Anchor.TOP_RIGHT;
-import static sofia.graphics.Timings.backIn;
-import static sofia.graphics.Timings.backInOut;
-import static sofia.graphics.Timings.backOut;
-import static sofia.graphics.Timings.bounce;
-import static sofia.graphics.Timings.cycle;
-import static sofia.graphics.Timings.easeIn;
-import static sofia.graphics.Timings.easeInOut;
-import static sofia.graphics.Timings.easeOut;
-import static sofia.graphics.Timings.elasticIn;
-import static sofia.graphics.Timings.elasticInOut;
-import static sofia.graphics.Timings.elasticOut;
-import static sofia.graphics.Timings.linear;
+import static sofia.graphics.Anchor.*;
+import static sofia.graphics.Timings.*;
 import sofia.app.Screen;
 import sofia.graphics.Color;
 import sofia.graphics.RectangleShape;
 import sofia.graphics.RepeatMode;
 import sofia.graphics.Shape;
 import sofia.graphics.ShapeView;
+import sofia.widget.Spinner;
 import android.graphics.RectF;
 import android.view.View;
 import android.view.animation.Interpolator;
 import android.widget.CheckBox;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 public class AnimationTimingsDemo extends Screen
@@ -32,7 +20,7 @@ public class AnimationTimingsDemo extends Screen
     private ShapeView shapeView;
     private TextView statusLabel;
     private CheckBox delayAnimation;
-    private Spinner repeatMode;
+    private Spinner<String> repeatMode;
     private int repeatCount;
 
     private RectangleShape rectangle;
@@ -43,13 +31,6 @@ public class AnimationTimingsDemo extends Screen
     // ----------------------------------------------------------
     public void initialize()
     {
-        setContentView(R.layout.animation_timings);
-
-        shapeView = (ShapeView) findViewById(R.id.shapeView);
-        repeatMode = (Spinner) findViewById(R.id.repeatMode);
-        delayAnimation = (CheckBox) findViewById(R.id.delayAnimation);
-        statusLabel = (TextView) findViewById(R.id.statusLabel);
-
         startingBounds = TOP_LEFT.ofView().shiftBy(50, 5).sized(50, 50);
         endingBounds = TOP_RIGHT.anchoredAt(
             TOP_RIGHT.ofView().shiftBy(-50, 5)).sized(50, 50);
@@ -58,6 +39,12 @@ public class AnimationTimingsDemo extends Screen
         rectangle.setFilled(true);
         rectangle.setColor(Color.green);
         shapeView.add(rectangle);
+
+        // FIXME fix auto-loaded entries from attributes
+        repeatMode.add("NONE");
+        repeatMode.add("REPEAT");
+        repeatMode.add("OSCILLATE");
+        repeatMode.setSelection(0);
     }
 
 
@@ -159,6 +146,7 @@ public class AnimationTimingsDemo extends Screen
         rectangle.setColor(Color.green);
 
         rectangle.animate(2000)
+            .name("test")
             .delay(delayAnimation.isChecked() ? 2000 : 0)
             .timing(timing)
             .bounds(endingBounds)
@@ -170,7 +158,7 @@ public class AnimationTimingsDemo extends Screen
 
 
     // ----------------------------------------------------------
-    public void onAnimationStart(Shape.Animator<?> animator)
+    public void testAnimationStarted(Shape.Animator<?> animator)
     {
         repeatCount = 0;
         statusLabel.setText("Started");
@@ -178,9 +166,9 @@ public class AnimationTimingsDemo extends Screen
 
 
     // ----------------------------------------------------------
-    public void onAnimationRepeat(Shape.Animator<?> animator)
+    public void testAnimationRepeated(Shape.Animator<?> animator)
     {
-    	boolean backward = animator.isBackward();
+        boolean backward = animator.isBackward();
 
         String text = "";
         if (backward)
@@ -199,7 +187,7 @@ public class AnimationTimingsDemo extends Screen
 
 
     // ----------------------------------------------------------
-    public void onAnimationDone(Shape.Animator<?> animator)
+    public void testAnimationEnded(Shape.Animator<?> animator)
     {
         statusLabel.setText("Ended");
     }
