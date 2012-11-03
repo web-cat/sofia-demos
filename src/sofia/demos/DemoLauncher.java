@@ -35,7 +35,6 @@ public class DemoLauncher extends ListScreen<DemoClass>
 		demoList.add(new DemoClass(GestureDemo.class));
 		demoList.add(new DemoClass(ConnectFour.class));
 		demoList.add(new DemoClass(AnimationTimingsDemo.class));
-		demoList.add(new DemoClass(MarkerDemo.class));
 		demoList.add(new DemoClass(BackAndForthScreenOne.class));
 		demoList.add(new DemoClass(PongScreen.class));
 		demoList.add(new DemoClass(BreakoutScreen.class));
@@ -43,6 +42,7 @@ public class DemoLauncher extends ListScreen<DemoClass>
 		demoList.add(new DemoClass(CompositeShapeDemo.class));
 		demoList.add(new DemoClass(JoystickDemo.class));
 		demoList.add(new DemoClass(ListDemo.class));
+		demoList.add(new DemoClass(SoundPlayerDemo.class));
 	}
 
 
