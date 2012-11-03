@@ -6,7 +6,6 @@ import android.widget.TextView;
 import sofia.app.Screen;
 import sofia.app.ScreenLayout;
 
-@ScreenLayout("back_and_forth_2")
 public class BackAndForthScreenTwo extends Screen
 {
     private TextView textView;

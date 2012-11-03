@@ -15,7 +15,6 @@ import android.widget.SeekBar;
  *  @author  Tony Allevato
  *  @version 2011.12.17
  */
-@ScreenLayout("back_and_forth_1")
 public class BackAndForthScreenOne extends Screen
 {
     private SeekBar seekBar;
@@ -25,14 +24,14 @@ public class BackAndForthScreenOne extends Screen
     // ----------------------------------------------------------
     public void openScreenTwo(View view)
     {
-    	presentScreen(BackAndForthScreenTwo.class,
-    			seekBar.getProgress(), textField.getText().toString());
+        presentScreen(BackAndForthScreenTwo.class,
+                seekBar.getProgress(), textField.getText().toString());
     }
-    
-    
+
+
     // ----------------------------------------------------------
     public void backAndForthScreenTwoFinished(String result)
     {
-    	showConfirmationDialog("Result", "You entered " + result);
+        showConfirmationDialog("Result", "You entered " + result);
     }
 }
