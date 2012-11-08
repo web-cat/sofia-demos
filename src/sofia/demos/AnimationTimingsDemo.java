@@ -39,12 +39,6 @@ public class AnimationTimingsDemo extends Screen
         rectangle.setFilled(true);
         rectangle.setColor(Color.green);
         shapeView.add(rectangle);
-
-        // FIXME fix auto-loaded entries from attributes
-        repeatMode.add("NONE");
-        repeatMode.add("REPEAT");
-        repeatMode.add("OSCILLATE");
-        repeatMode.setSelection(0);
     }
 
 
